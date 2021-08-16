@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.container {
+    display: table;
+}
+
+input {
+    width: 250px;
+    padding: 5px;
+}
+
+input, label {
+    display:block;
+}
+
+#userName {
+    margin: 5px;
+    text-align: center;
+}
+
+#password {
+    margin: 5px;
+    text-align: center;
+}
+
+a {
+    text-align: center;
+}
+
+#submitButton {
+    vertical-align: top;
+}
