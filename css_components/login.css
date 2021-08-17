@@ -1,6 +1,7 @@
 body {
     display: flex;
     justify-content: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h3 {
@@ -8,16 +9,21 @@ h3 {
 }
 
 .container {
-    display: table;
+    padding: 150px;
+}
+
+label {
+    margin: 5px;
+    display: block;
 }
 
 input {
     width: 250px;
+    height: 20px;
     padding: 5px;
-}
-
-input, label {
-    display:block;
+    display: block;
+    text-align: center;
+    font-size: 20px;
 }
 
 #userName {
@@ -31,9 +37,31 @@ input, label {
 }
 
 a {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 #submitButton {
-    vertical-align: top;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 125px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    height: 35px;
+    border: 1px solid #008CBA;
+    background-color: white;
+    color: #008CBA;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+button:hover {
+    border: 1px solid #008CBA;
+    background-color: #008CBA;
+    color: white;
+    border-radius: 5px;
 }

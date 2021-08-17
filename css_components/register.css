@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    text-align: center;
+}
+
+label {
+    margin: 5px;
+    display: block;
+    text-align: center;
+}
+
+input {
+    width: 250px;
+    height: 20px;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+}
+
+#submitButton {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 125px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    height: 35px;
+    border: 1px solid #008CBA;
+    background-color: white;
+    color: #008CBA;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+button:hover {
+    border: 1px solid #008CBA;
+    background-color: #008CBA;
+    color: white;
+    border-radius: 5px;
+}
+
+.container {
+    padding: 150px;
+}
+
+p {
+    text-align: center;
+    color: red;
+    width: 250px;
+}
+
+.error {
+    border: 1px solid red;
+    outline-color: red;
+}
+
+.valid {
+    border: 1px solid green;
+    outline-color: green;
+}

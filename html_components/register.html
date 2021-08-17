@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
     <link rel="stylesheet" href="/css_components/register.css">
-    <script src="/js_components/register.js"></script>
     <title>Register</title>
 </head>
 <body>
@@ -13,16 +13,25 @@
         <h3>Register</h3>
         <div id="registerUsername">
             <label>Username: </label>
-            <input type="text">
+            <input type="text" min="3" title="Username must be longer than 2 characters" required>
+            <p></p>
         </div>
         <div id="registerPassword">
             <label>Password: </label>
-            <input type="password">
+            <input type="password" min="3" title="Password must be longer than 2 characters" required>
+            <p></p>
         </div>
         <div id="confirmPassword">
             <label>Confirm Password: </label>
-            <input type="password">
+            <input type="password" min="3" title="Passwords must match" required>
+            <p></p>
+        </div>
+        <a href="/html_components/index.html">Already have an account?</a>
+        <div id="submitButton">
+            <button>Register</button>
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js_components/register.js"></script>
 </html>
