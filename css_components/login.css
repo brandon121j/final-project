@@ -65,3 +65,17 @@ button:hover {
     color: white;
     border-radius: 5px;
 }
+
+.error {
+    color: red;
+}
+
+.errorInput{
+    outline-color: red;
+    border: 1px solid red;
+}
+
+.success {
+    outline-color: green;
+    border: 1px solid green;
+}

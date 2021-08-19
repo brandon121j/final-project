@@ -18,6 +18,14 @@ const passwordError = '* password must be longer than 2 characters';
 
 const confirmError = '* Passwords must match';
 
+let savedData;
+
+if (JSON.parse(localStorage.getItem('savedData').length == 0)) {
+    savedData = [];
+} else {
+    savedData = JSON.parse(localStorage.getItem('savedData'));
+}
+
 let registerValidator = {
     user: false,
     pass: false,
@@ -33,7 +41,8 @@ const submit = () => {
     if (registerValidator.user === true &&
         registerValidator.pass === true &&
         registerValidator.confirm === true) {
-            localStorage.setItem('userData', JSON.stringify(userData))
+            savedData.push(userData)
+            localStorage.setItem('savedData', JSON.stringify(savedData))
             window.location.href = "/html_components/index.html"
         }
 }
