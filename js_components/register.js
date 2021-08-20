@@ -20,56 +20,78 @@ const confirmError = '* Passwords must match';
 
 let savedData;
 
-if (JSON.parse(localStorage.getItem('savedData').length == 0)) {
+if (JSON.parse(localStorage.getItem('savedData') === null)) {
     savedData = [];
 } else {
     savedData = JSON.parse(localStorage.getItem('savedData'));
-}
+} 
 
 let registerValidator = {
     user: false,
+    uniqueUser: false,
     pass: false,
     confirm: false 
-}
-
-const submit = () => {
-    let userData = {
-        username: username.val(),
-        password: password.val()
-    }
-
-    if (registerValidator.user === true &&
-        registerValidator.pass === true &&
-        registerValidator.confirm === true) {
-            savedData.push(userData)
-            localStorage.setItem('savedData', JSON.stringify(savedData))
-            window.location.href = "/html_components/index.html"
-        }
 }
 
 const validatorStatus = () => {
     let passValue = password.val();
     let confirmValue = confirm.val();
     let usernameValue = username.val();
-    confirmValue === passValue && confirmValue.length > 3 ? registerValidator.confirm = true : registerValidator.confirm = false; 
-    usernameValue.length > 3 ? registerValidator.user = true : registerValidator.user = false;
-    passValue.length > 3 ? registerValidator.pass = true : registerValidator.pass = false;
+    if (savedData.length > 0) {
+        for(i = 0; i < savedData.length; i++) {
+            if (savedData[i].username === usernameValue) {
+                registerValidator.uniqueUser = false;
+                break;
+            } else {registerValidator.uniqueUser = true}
+        }
+    } else {registerValidator.uniqueUser = true}
+
+    usernameValue.length > 2 ? registerValidator.user = true : registerValidator.user = false;
+    passValue.length > 2 ? registerValidator.pass = true : registerValidator.pass = false;
+    confirmValue === passValue && confirmValue.length > 2 ? registerValidator.confirm = true : registerValidator.confirm = false; 
+}
+
+const submit = () => {
+    let passValue = password.val();
+    let confirmValue = confirm.val();
+    let usernameValue = username.val();
+
+    let userData = {
+        username: username.val(),
+        password: password.val()
+    }
+
+    if (
+        registerValidator.user === true &&
+        registerValidator.pass === true &&
+        registerValidator.confirm === true &&
+        registerValidator.uniqueUser === true &&
+        usernameValue.length > 2 && 
+        passValue.length > 2 && 
+        confirmValue.length > 2 &&
+        passValue === confirmValue
+        ) {
+            savedData.push(userData)
+            localStorage.setItem('savedData', JSON.stringify(savedData))
+            window.location.href = "/html_components/index.html"
+        }
 }
 
 const usernameValidator = () => {
-    let usernameValue = username.val();
-    usernameValue.length < 3 ? username.addClass('error') && usernameMessage.html(usernameError) : username.removeClass('error') && username.addClass('valid') && usernameMessage.html('');
+    registerValidator.user !== true ? username.removeClass('valid') && username.addClass('error') && usernameMessage.html(usernameError) : username.removeClass('error') && username.addClass('valid') && usernameMessage.html('') && takenValidator();
+}
+
+const takenValidator = () => {
+    registerValidator.uniqueUser !== true ? username.removeClass('valid') && username.addClass('error') && usernameMessage.html('* Username taken') : username.removeClass('error') && username.addClass('valid') && usernameMessage.html('')
 }
 
 const passwordValidator = () => {
-    let passValue = password.val();
-    passValue.length < 3 ? password.addClass('error') && passwordMessage.html(passwordError) : password.removeClass('error') && password.addClass('valid') && passwordMessage.html('');
+    registerValidator.pass !== true ? password.addClass('error') && passwordMessage.html(passwordError) : password.removeClass('error') && password.addClass('valid') && passwordMessage.html('');
 }
 
 const confirmValidator = () => {
-    let confirmValue = confirm.val();
-    let passValue = password.val();
-    confirmValue !== passValue ? confirm.addClass('error') && confirmMessage.html(confirmError) :confirm.removeClass('error') &&confirm.addClass('valid') &&confirmMessage.html('');
+    registerValidator.confirm !== true ? confirm.addClass('error') && confirmMessage.html(confirmError) : confirm.removeClass('error') && confirm.addClass('valid') && confirmMessage.html('');
+
 }
 
 $('input').on('change', validatorStatus);
@@ -81,7 +103,4 @@ password.on('blur', passwordValidator);
 confirm.on('blur', confirmValidator);
 
 button.on('click', submit);
-
-
-
 

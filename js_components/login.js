@@ -1,6 +1,6 @@
 let userInfo = localStorage.getItem('savedData');
 
-let data = JSON.parse(userInfo);
+let savedData = JSON.parse(userInfo);
 
 const username = $('#userName input');
 
@@ -12,32 +12,45 @@ const passwordMessage = $('#password p')
 
 const button = $('button');
 
-console.log(data)
+let userIndex;
+
+console.log(savedData)
 
 const error = () => {
-    for(i = 0; i < data.length; i++) {
-        if (username.val() !== data[i].username && password.val() !== data[i].password || 
-            username.val() !== data[i].username || password.val() !== data[i].password
-        ) {
-            passwordMessage.addClass('error');
-            username.addClass('errorInput');
-            password.addClass('errorInput');
-            passwordMessage.html('* Invalid login credentials');
-        } 
-    }   
+    passwordMessage.addClass('error');
+    username.addClass('errorInput');
+    password.addClass('errorInput');
+    passwordMessage.html('* Invalid login credentials');
 }
 
-const redirect = () => {
+const success = () => {
     passwordMessage.html('');
     username.addClass('success');
     password.addClass('success');
-    window.location.href = "/html_components/main.html"
 }
 
-const submit = () => {
-    data.forEach(element => {
-        username.val() === element.username && password.val() === element.password ? redirect() : error();
-    })
+const indexCache = () => {
+    for (i = 0; i < savedData.length; i++) {
+        if (savedData[i].username === username.val()) {
+            userIndex = i;
+            break;
+        }
+    }
 }
 
-button.on('click', submit);
+const redirect = () => {
+    if (
+    username.val() === savedData[userIndex].username && 
+    password.val() === savedData[userIndex].password
+    ) {
+        success();
+        localStorage.setItem('loggedUser', savedData[userIndex]);
+        window.location.href = "/html_components/main.html";
+    } else {
+        error();
+    }
+}
+
+username.on('change', indexCache)
+
+button.on('click', redirect);
