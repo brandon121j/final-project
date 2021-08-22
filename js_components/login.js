@@ -29,6 +29,7 @@ const success = () => {
     password.addClass('success');
 }
 
+// Retrieves index number of associated username 
 const indexCache = () => {
     for (i = 0; i < savedData.length; i++) {
         if (savedData[i].username === username.val()) {
@@ -44,7 +45,7 @@ const redirect = () => {
     password.val() === savedData[userIndex].password
     ) {
         success();
-        localStorage.setItem('loggedUser', savedData[userIndex]);
+        localStorage.setItem('loggedUser', savedData[userIndex].username);
         window.location.href = "/html_components/main.html";
     } else {
         error();

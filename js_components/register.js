@@ -20,6 +20,7 @@ const confirmError = '* Passwords must match';
 
 let savedData;
 
+// Retrieves saved users from local storage
 if (JSON.parse(localStorage.getItem('savedData') === null)) {
     savedData = [];
 } else {

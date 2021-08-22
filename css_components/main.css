@@ -21,8 +21,8 @@ body {
     /* margin: 5px; */
     cursor: pointer;
     height: 35px;
-    border: 1px solid #008CBA;
-    background-color: #008CBA;
+    border: 1px solid rgb(13,110,253);
+    background-color: rgb(13,110,253);
     color: white;
     border-radius: 5px;
     font-family: sans-serif;
@@ -42,6 +42,6 @@ body {
     font-size: 20px;
     padding-right: 125px;
     border-radius: 5px;
-    outline-color: #008CBA;
-    border: 2px solid #008CBA;
+    outline-color: rgb(13,110,253);
+    border: 2px solid rgb(13,110,253);
 }

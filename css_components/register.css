@@ -39,16 +39,16 @@ button {
     margin: 5px;
     cursor: pointer;
     height: 35px;
-    border: 1px solid #008CBA;
+    border: 1px solid rgb(13,110,253);
     background-color: white;
-    color: #008CBA;
+    color: rgb(13,110,253);
     border-radius: 5px;
     font-family: sans-serif;
 }
 
 button:hover {
-    border: 1px solid #008CBA;
-    background-color: #008CBA;
+    border: 1px solid rgb(13,110,253);
+    background-color: rgb(13,110,253);
     color: white;
     border-radius: 5px;
 }
