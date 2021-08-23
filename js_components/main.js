@@ -11,12 +11,14 @@ let loggedUser = localStorage.getItem('loggedUser');
 //     localStorage.removeItem('loggedUser');
 // }
 
+// Retrieves all registered users
 let userInfo = localStorage.getItem('savedData');
-
-let userIndex;
 
 let savedData = JSON.parse(userInfo);
 
+let userIndex;
+
+// Retrieves current user from array of registered users
 for (i = 0; i < savedData.length; i++) {
     if (savedData[i].username === loggedUser) {
         userIndex = i;
@@ -31,8 +33,6 @@ const cpInput = $('#createProjectInput');
 
 const cpButton = $('#createProjectButton');
 
-const usernameSettings = $('.menuItems span')
-
 const startingCash = $('.financeContainer input');
 
 const settingsButton = $('.menu button');
@@ -41,8 +41,10 @@ const settingsOptions = $('.menuItems');
 
 const darkModeButton = $('#darkMode');
 
-usernameSettings.html(loggedUser);
+const logoutButton = $('#logout');
 
+let sidebarCounter = 0;
+let darkModeCounter = 0
 let darkModeToggle = false;
 
 const createProject = () => {
@@ -55,7 +57,7 @@ const startingCashSetter = () => {
     console.log('working');
 }
 
-let darkModeCounter = 0
+
 const darkMode = () => {
     darkModeCounter++;
     darkModeCounter % 2 !== 0 ? darkModeToggle = true : darkModeToggle = false;
@@ -69,7 +71,7 @@ const darkMode = () => {
     console.log(savedData[userIndex].darkMode)
 }
 
-let sidebarCounter = 0;
+
 const sidebar = () => {
     sidebarCounter++;
     if (sidebarCounter % 2 !== 0) {
@@ -86,3 +88,10 @@ cpButton.on('click', createProject);
 settingsButton.on('click', sidebar);
 
 darkModeButton.on('click', darkMode)
+
+logoutButton.on('click', function() {
+    console.log('working')
+    location.href = "/html_components/index.html"
+    localStorage.removeItem('loggedUser')})
+
+darkMode();
