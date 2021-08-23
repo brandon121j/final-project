@@ -65,6 +65,7 @@ let financeData = {
 
 const startingCashSetter = () => {
     financeData.starting = startingCash.val();
+    calculator();
 }
 
 const darkMode = () => { 
@@ -90,7 +91,7 @@ const logout = () => {
 const newExpenseAdder = () => {
     financeData.expenseName.push(expenseNames.val()) + financeData.expenseValue.push(expenseValues.val());
     let appendedExpenses = (`<h3>${expenseNames.val()}   <span>-$${expenseValues.val()}<span></h3>`);
-    $('.finances').append(appendedExpenses)
+    $('.finances').append(appendedExpenses);
     calculator();
 }
 
@@ -99,16 +100,15 @@ const calculator = () => {
     for (i = 0; i < financeData.expenseValue.length; i++) {
         addedExpenses += Number(financeData.expenseValue[i])
     }
-    remainingCashValue = Number(financeData.starting) - Number(addedExpenses) 
-    remainingCash.html(`Remaining Cash: $${remainingCashValue}`)
-    console.log(addedExpenses)
+    remainingCashValue = Number(financeData.starting) - Number(addedExpenses);
+    remainingCash.html(`Remaining Cash: $${remainingCashValue}`);
 }
 
 const financeLoader = () => {
     for (i = 0; i < usersFinance.expenseValue.length; i++) {
-        financeData.expenseName.push(usersFinance.expenseName[i])
-        financeData.expenseValue.push(usersFinance.expenseValue[i])
-        let appendedExpenses = (`<h3>${usersFinance.expenseName[i]}   <span>-$${usersFinance.expenseValue[i]}<span></h3>`);
+        financeData.expenseName.push(usersFinance.expenseName[i]);
+        financeData.expenseValue.push(usersFinance.expenseValue[i]);
+        let appendedExpenses = (`<h3>${usersFinance.expenseName[i]}  <span>-$${usersFinance.expenseValue[i]}<span></h3>`);
         $('.finances').append(appendedExpenses)
     }
 }
