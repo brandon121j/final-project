@@ -26,6 +26,9 @@ for (i = 0; i < savedData.length; i++) {
     }
 }
 
+// Sets users preference of darkmode on page load
+savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');
+
 $('#header').html(`<h1>${loggedUser}'s Finances</h1>`);
 
 
@@ -58,17 +61,10 @@ const startingCashSetter = () => {
 }
 
 
-const darkMode = () => {
-    darkModeCounter++;
-    darkModeCounter % 2 !== 0 ? darkModeToggle = true : darkModeToggle = false;
-    if (darkModeToggle === true) {
-        savedData[userIndex].darkMode = true;
-        $('body').addClass('darkMode')
-    } else {
-        savedData[userIndex].darkMode = false;
-        $('body').removeClass('darkMode');
-    }
-    console.log(savedData[userIndex].darkMode)
+const darkMode = () => { 
+    savedData[userIndex].darkMode === true ? savedData[userIndex].darkMode = false : savedData[userIndex].darkMode = true
+    savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');
+    console.log(savedData[userIndex])
 }
 
 
@@ -90,8 +86,7 @@ settingsButton.on('click', sidebar);
 darkModeButton.on('click', darkMode)
 
 logoutButton.on('click', function() {
-    console.log('working')
+    localStorage.setItem('savedData', JSON.stringify(savedData))
     location.href = "/html_components/index.html"
     localStorage.removeItem('loggedUser')})
 
-darkMode();
