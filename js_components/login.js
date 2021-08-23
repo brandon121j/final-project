@@ -14,7 +14,7 @@ const button = $('button');
 
 let userIndex;
 
-console.log(savedData)
+console.log(savedData);
 
 const error = () => {
     passwordMessage.addClass('error');
@@ -32,6 +32,7 @@ const success = () => {
 // Retrieves index number of associated username 
 const indexCache = () => {
     for (i = 0; i < savedData.length; i++) {
+        console.log(savedData[i])
         if (savedData[i].username === username.val()) {
             userIndex = i;
             break;

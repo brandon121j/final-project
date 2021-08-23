@@ -1,4 +1,4 @@
-body {
+.body {
     display: flex;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
@@ -9,39 +9,137 @@ body {
     justify-content: center;
 }
 
-#createProject {
-    display: flex;
-    justify-content: center;
+.container {
     margin: 50px
 }
 
-#createProject button {
+.formContainer button {
     width: 125px;
     padding: 10px;
-    /* margin: 5px; */
     cursor: pointer;
     height: 35px;
     border: 1px solid rgb(13,110,253);
     background-color: rgb(13,110,253);
     color: white;
-    border-radius: 5px;
     font-family: sans-serif;
-    margin-left: -125px;
 }
 
-#createProject button:hover {
-    background-color: #005572;
+.formContainer button:hover {
+    background-color: rgb(13,110,253);
 }
 
 
-#createProject input {
+.formContainer input {
     width: 250px;
     height: 20px;
     padding: 5.5px;
     text-align: center;
     font-size: 20px;
-    padding-right: 125px;
     border-radius: 5px;
     outline-color: rgb(13,110,253);
     border: 2px solid rgb(13,110,253);
+}
+
+.formContainer {
+    padding: 50px;
+}
+
+
+.finances {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.financeSection input {
+    width: 55px;
+    float: right;
+}
+
+.financeSection label {
+    float: left;
+}
+
+
+.financeContainer {
+    display: inline-block;
+    height: 35px;
+    text-align: center;
+    width: 200px;
+}
+
+.financeContainer {
+    width: 200px;
+}
+
+.financeContainer label {
+    display: flex;
+    justify-content: center;
+}
+
+.financeContainer button{
+    height: 35px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 355px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.menu button {
+    font-size: large;
+    padding: 20px;
+    border: 1px solid rgb(13,110,253);
+    background-color:  rgba(255, 255, 255, 0.5);
+    color: rgb(13,110,253);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.menu button:hover {
+    font-size: large;
+    padding: 20px;
+    border: 1px solid rgb(13,110,253);
+    background-color: rgb(13,110,253);
+    color: white;
+    border-radius: 5px;
+}
+
+.menu {
+    width: 200px;
+    height: 100px
+}
+
+.menuItems {
+    margin: 5px;
+    color: rgb(13,110,253);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(13,110,253);
+    opacity: .75;
+    transition: width 2s, height 4s;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(13,110,253);
+    opacity: 1;
+}
+
+.darkMode {
+    background-color: #202020;
+    color: #D6D6D6;
+}
+
+.darkMode input {
+    background-color: #121212;
+}
+
+.menuItems span {
+    font-size: large;
 }

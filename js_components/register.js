@@ -59,7 +59,8 @@ const submit = () => {
 
     let userData = {
         username: username.val(),
-        password: password.val()
+        password: password.val(),
+        darkMode: false
     }
 
     if (

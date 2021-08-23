@@ -9,18 +9,28 @@
     <title>Final Project</title>
 </head>
 <body>
-    <div class="container">
-        <div id="header"></div>
-        <div id="createProject">
-            <input type="text" maxlength="50">
-            <button>Create</button>
-            <div id="financeSection">
+    <div class="menu">
+        <button>Settings</button>
+        <a href="#" class="menuItems" style="display:none"><span></span></a>
+        <a href="#" class="menuItems" style="display:none" id="darkMode">Dark Mode</a>
+        <a href="#" class="menuItems" style="display:none">Change Username</a>
+        <a href="#" class="menuItems" style="display:none">Change Password</a>
+    </div>
+    <div class="body">
+        <div class="container">
+            <div id="header"></div>
+            <div class="formContainer">
+                <input type="text" maxlength="50" id="createProjectInput">
+                <button id="createProjectButton">Create</button>
+            </div>
+            <div class="financeSection">
                 <div class="finances">
                     
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js_components/main.js"></script>
