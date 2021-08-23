@@ -6,11 +6,6 @@ if (JSON.parse(localStorage.getItem('loggedUser') === null)) {
 // Retrieves username of logged in user
 let loggedUser = localStorage.getItem('loggedUser');
 
-// Logs user out when they leave the page
-// window.onbeforeunload = function () { 
-//     localStorage.removeItem('loggedUser');
-// }
-
 // Retrieves all registered users
 let userInfo = localStorage.getItem('savedData');
 
@@ -25,9 +20,6 @@ for (i = 0; i < savedData.length; i++) {
         break;
     }
 }
-
-// Retrieves finances of current user
-
 
 // Sets users preference of darkmode on page load
 savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');

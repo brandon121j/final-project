@@ -72,3 +72,26 @@ p {
     border: 1px solid green;
     outline-color: green;
 }
+
+@media screen and (max-width: 700px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    body {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+}
