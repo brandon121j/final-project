@@ -162,10 +162,51 @@ a:hover {
     margin: 10px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (min-width: 300px) {
     body {
         display: flex;
         justify-content: center;
     }
+    .container {
+        width: 300px;
+        height: 550px;
+    }
+
+    .menu {
+        position: fixed;
+        left: 175px
+    }
 }
 
+@media screen and (min-width: 400px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+    .container {
+        width: 300px;
+        height: 550px;
+    }
+
+    .menu {
+        position: fixed;
+        left: 255px
+    }
+
+
+}
+
+@media screen and (min-width: 700px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu {
+        position: fixed;
+        left: 600px
+    }
+
+
+
+}
