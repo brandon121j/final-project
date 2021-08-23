@@ -14,8 +14,6 @@ const button = $('button');
 
 let userIndex;
 
-console.log(savedData);
-
 const error = () => {
     passwordMessage.addClass('error');
     username.addClass('errorInput');

@@ -26,6 +26,9 @@ for (i = 0; i < savedData.length; i++) {
     }
 }
 
+// Retrieves finances of current user
+
+
 // Sets users preference of darkmode on page load
 savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');
 
@@ -34,10 +37,6 @@ savedData[userIndex].darkMode === true ? $('#darkMode').html('Dark Mode: ON') : 
 
 // Loads current logged user's name at the top of page
 $('#header').html(`<h1>${loggedUser}'s Finances</h1>`);
-
-const cpInput = $('#createProjectInput');
-
-const cpButton = $('#createProjectButton');
 
 const startingCash = $('.formContainer input');
 
@@ -48,8 +47,6 @@ const settingsOptions = $('.menuItems');
 const darkModeButton = $('#darkMode');
 
 const logoutButton = $('#logout');
-
-const budgetProfiles = $('.finances h1');
 
 const expenseAdder = $('.buttonContainer button');
 
@@ -89,15 +86,15 @@ const sidebar = () => {
 }
 
 const logout = () => {
-    localStorage.setItem('savedData', JSON.stringify(savedData))
+    localStorage.setItem('savedData', JSON.stringify(savedData));
+    localStorage.setItem(`${loggedUser}`, JSON.stringify(financeData))
     location.href = "/html_components/index.html"
     localStorage.removeItem('loggedUser')
 }
 
 const newExpenseAdder = () => {
-    financeData.expenseName.push(expenseNames.val());
-    financeData.expenseValue.push(expenseValues.val())
-    let appendedExpenses = (`<h3>${expenseNames.val()}:   <span>-$${expenseValues.val()}<span></h3>`);
+    financeData.expenseName.push(expenseNames.val()) + financeData.expenseValue.push(expenseValues.val());
+    let appendedExpenses = (`<h3>${expenseNames.val()}   <span>-$${expenseValues.val()}<span></h3>`);
     $('.finances').append(appendedExpenses)
     calculator();
 }
@@ -111,7 +108,6 @@ const calculator = () => {
     remainingCash.html(`Remaining Cash: $${remainingCashValue}`)
     console.log(addedExpenses)
 }
-
 
 startingCash.on('input', startingCashSetter);
 
