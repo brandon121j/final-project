@@ -4,6 +4,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+* {
+    border: .5px solid red;
+}
+
 #header {
     display: flex;
     justify-content: center;
@@ -30,7 +34,7 @@
 
 
 .formContainer input {
-    width: 250px;
+    width: 100px;
     height: 20px;
     padding: 5.5px;
     text-align: center;
@@ -49,43 +53,20 @@
     display: flex;
     justify-content: center;
     text-align: center;
+    margin: 10px;
+    flex-direction: column;
 }
 
-.financeSection input {
-    width: 55px;
+.finances span {
     float: right;
 }
 
-.financeSection label {
+.finances h3 {
     float: left;
 }
 
-
-.financeContainer {
-    display: inline-block;
-    height: 35px;
-    text-align: center;
-    width: 200px;
-}
-
-.financeContainer {
-    width: 200px;
-}
-
-.financeContainer label {
-    display: flex;
-    justify-content: center;
-}
-
-.financeContainer button{
-    height: 35px;
-    background-color: green;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    right: 355px;
-    display: inline-block;
-    cursor: pointer;
+.financeSection  {
+    width: 350px;
 }
 
 .menu button {
@@ -138,8 +119,43 @@ a:hover {
 
 .darkMode input {
     background-color: #121212;
+    color: #D6D6D6;
 }
 
 .menuItems span {
     font-size: large;
+}
+
+.expenseName {
+    float: left;
+    width: 150px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.expenseNumber {
+    float: right;
+    width: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.buttonContainer button{
+    width: 115px;
+    cursor: pointer;
+    border: 1px solid rgb(13,110,253);
+    background-color: rgb(13,110,253);
+    color: white;
+    font-family: sans-serif;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.remainingCash {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
 }

@@ -32,14 +32,14 @@ savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('bod
 // Adds ON/OFF toggle switch in sidebar menu
 savedData[userIndex].darkMode === true ? $('#darkMode').html('Dark Mode: ON') : $('#darkMode').html('Dark Mode: OFF');
 
+// Loads current logged user's name at the top of page
 $('#header').html(`<h1>${loggedUser}'s Finances</h1>`);
-
 
 const cpInput = $('#createProjectInput');
 
 const cpButton = $('#createProjectButton');
 
-const startingCash = $('.financeContainer input');
+const startingCash = $('.formContainer input');
 
 const settingsButton = $('.menu button');
 
@@ -49,18 +49,31 @@ const darkModeButton = $('#darkMode');
 
 const logoutButton = $('#logout');
 
+const budgetProfiles = $('.finances h1');
+
+const expenseAdder = $('.buttonContainer button');
+
+const remainingCash = $('.remainingCash')
+
+let expenseNames = $('.expenseName');
+
+let expenseValues = $('.expenseNumber');
+
 let sidebarCounter = 0;
 
-const createProject = () => {
-    let newProject = (`<h1 class="finances">${cpInput.val()}</h1>`);
-    $('.financeSection').append(newProject);
+let addedExpenses = 0;
+
+let remainingCashValue = 0;
+
+let financeData = {
+    starting: 0,
+    expenseName: [],
+    expenseValue: []
 }
 
 const startingCashSetter = () => {
-    console.log(startingCash.val());
-    console.log('working');
+    financeData.starting = startingCash.val();
 }
-
 
 const darkMode = () => { 
     savedData[userIndex].darkMode === true ? savedData[userIndex].darkMode = false : savedData[userIndex].darkMode = true;
@@ -68,13 +81,11 @@ const darkMode = () => {
     savedData[userIndex].darkMode === true ? $('#darkMode').html('Dark Mode: ON') : $('#darkMode').html('Dark Mode: OFF');
 }
 
-
 const sidebar = () => {
     sidebarCounter++;
     if (sidebarCounter % 2 !== 0) {
         settingsOptions.css('display', 'block');
     } else {settingsOptions.css('display', 'none')}
-    console.log(sidebarCounter)
 }
 
 const logout = () => {
@@ -83,15 +94,33 @@ const logout = () => {
     localStorage.removeItem('loggedUser')
 }
 
+const newExpenseAdder = () => {
+    financeData.expenseName.push(expenseNames.val());
+    financeData.expenseValue.push(expenseValues.val())
+    let appendedExpenses = (`<h3>${expenseNames.val()}:   <span>-$${expenseValues.val()}<span></h3>`);
+    $('.finances').append(appendedExpenses)
+    calculator();
+}
+
+const calculator = () => {
+    addedExpenses = 0;
+    for (i = 0; i < financeData.expenseValue.length; i++) {
+        addedExpenses += Number(financeData.expenseValue[i])
+    }
+    remainingCashValue = Number(financeData.starting) - Number(addedExpenses) 
+    remainingCash.html(`Remaining Cash: $${remainingCashValue}`)
+    console.log(addedExpenses)
+}
+
 
 startingCash.on('input', startingCashSetter);
-
-cpButton.on('click', createProject);
 
 settingsButton.on('click', sidebar);
 
 darkModeButton.on('click', darkMode)
 
-logoutButton.on('click', logout)
-    
+logoutButton.on('click', logout);
+
+expenseAdder.on('click', newExpenseAdder);
+
 
