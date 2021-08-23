@@ -29,6 +29,9 @@ for (i = 0; i < savedData.length; i++) {
 // Sets users preference of darkmode on page load
 savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');
 
+// Adds ON/OFF toggle switch in sidebar menu
+savedData[userIndex].darkMode === true ? $('#darkMode').html('Dark Mode: ON') : $('#darkMode').html('Dark Mode: OFF');
+
 $('#header').html(`<h1>${loggedUser}'s Finances</h1>`);
 
 
@@ -47,8 +50,6 @@ const darkModeButton = $('#darkMode');
 const logoutButton = $('#logout');
 
 let sidebarCounter = 0;
-let darkModeCounter = 0
-let darkModeToggle = false;
 
 const createProject = () => {
     let newProject = (`<h1 class="finances">${cpInput.val()}</h1>`);
@@ -62,9 +63,9 @@ const startingCashSetter = () => {
 
 
 const darkMode = () => { 
-    savedData[userIndex].darkMode === true ? savedData[userIndex].darkMode = false : savedData[userIndex].darkMode = true
+    savedData[userIndex].darkMode === true ? savedData[userIndex].darkMode = false : savedData[userIndex].darkMode = true;
     savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');
-    console.log(savedData[userIndex])
+    savedData[userIndex].darkMode === true ? $('#darkMode').html('Dark Mode: ON') : $('#darkMode').html('Dark Mode: OFF');
 }
 
 
@@ -76,6 +77,12 @@ const sidebar = () => {
     console.log(sidebarCounter)
 }
 
+const logout = () => {
+    localStorage.setItem('savedData', JSON.stringify(savedData))
+    location.href = "/html_components/index.html"
+    localStorage.removeItem('loggedUser')
+}
+
 
 startingCash.on('input', startingCashSetter);
 
@@ -85,8 +92,6 @@ settingsButton.on('click', sidebar);
 
 darkModeButton.on('click', darkMode)
 
-logoutButton.on('click', function() {
-    localStorage.setItem('savedData', JSON.stringify(savedData))
-    location.href = "/html_components/index.html"
-    localStorage.removeItem('loggedUser')})
+logoutButton.on('click', logout)
+    
 
