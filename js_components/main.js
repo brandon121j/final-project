@@ -21,6 +21,9 @@ for (i = 0; i < savedData.length; i++) {
     }
 }
 
+// Retrieves logged in users saved finances
+let usersFinance = (JSON.parse(localStorage.getItem(`${loggedUser}`)))
+
 // Sets users preference of darkmode on page load
 savedData[userIndex].darkMode === true ? $('body').addClass('darkMode') : $('body').removeClass('darkMode');
 
@@ -101,6 +104,15 @@ const calculator = () => {
     console.log(addedExpenses)
 }
 
+const financeLoader = () => {
+    for (i = 0; i < usersFinance.expenseValue.length; i++) {
+        financeData.expenseName.push(usersFinance.expenseName[i])
+        financeData.expenseValue.push(usersFinance.expenseValue[i])
+        let appendedExpenses = (`<h3>${usersFinance.expenseName[i]}   <span>-$${usersFinance.expenseValue[i]}<span></h3>`);
+        $('.finances').append(appendedExpenses)
+    }
+}
+
 startingCash.on('input', startingCashSetter);
 
 settingsButton.on('click', sidebar);
@@ -111,4 +123,4 @@ logoutButton.on('click', logout);
 
 expenseAdder.on('click', newExpenseAdder);
 
-
+financeLoader();
