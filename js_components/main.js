@@ -92,6 +92,8 @@ const newExpenseAdder = () => {
     financeData.expenseName.push(expenseNames.val()) + financeData.expenseValue.push(expenseValues.val());
     let appendedExpenses = (`<h3>${expenseNames.val()}   <span>-$${expenseValues.val()}<span></h3>`);
     $('.finances').append(appendedExpenses);
+    localStorage.setItem('savedData', JSON.stringify(savedData));
+    localStorage.setItem(`${loggedUser}`, JSON.stringify(financeData));
     calculator();
 }
 
@@ -105,22 +107,36 @@ const calculator = () => {
 }
 
 const financeLoader = () => {
-    for (i = 0; i < usersFinance.expenseValue.length; i++) {
-        financeData.expenseName.push(usersFinance.expenseName[i]);
-        financeData.expenseValue.push(usersFinance.expenseValue[i]);
-        let appendedExpenses = (`<h3>${usersFinance.expenseName[i]}  <span>-$${usersFinance.expenseValue[i]}<span></h3>`);
-        $('.finances').append(appendedExpenses)
+    try {
+        for (i = 0; i < usersFinance.expenseValue.length; i++) {
+            financeData.expenseName.push(usersFinance.expenseName[i]);
+            financeData.expenseValue.push(usersFinance.expenseValue[i]);
+            let appendedExpenses = (`<h3 class="newExpense">${usersFinance.expenseName[i]}  <span>-$${usersFinance.expenseValue[i]}<span></h3>`);
+            $('.finances').append(appendedExpenses);
+        }
     }
+    catch (error){}
 }
+
+const removeAll = () => {
+    $('.newExpense').remove();
+    localStorage.removeItem(loggedUser)
+}
+
+$('#remove').on('click', removeAll)
 
 startingCash.on('input', startingCashSetter);
 
 settingsButton.on('click', sidebar);
 
-darkModeButton.on('click', darkMode)
+darkModeButton.on('click', darkMode);
 
 logoutButton.on('click', logout);
 
 expenseAdder.on('click', newExpenseAdder);
+
+let currentItem;
+
+
 
 financeLoader();
