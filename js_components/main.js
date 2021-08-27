@@ -45,7 +45,7 @@ const logoutButton = $('#logout');
 
 const expenseAdder = $('.buttonContainer button');
 
-const remainingCash = $('.remainingCash')
+const remainingCash = $('.remainingCash');
 
 let expenseNames = $('.expenseName');
 
@@ -115,7 +115,7 @@ const financeLoader = () => {
             $('.finances').append(appendedExpenses);
         }
     }
-    catch (error){}
+    catch (error) {}
 }
 
 const removeAll = () => {
@@ -134,9 +134,5 @@ darkModeButton.on('click', darkMode);
 logoutButton.on('click', logout);
 
 expenseAdder.on('click', newExpenseAdder);
-
-let currentItem;
-
-
 
 financeLoader();

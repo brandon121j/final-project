@@ -2,13 +2,13 @@ let userInfo = localStorage.getItem('savedData');
 
 let savedData = JSON.parse(userInfo);
 
-const username = $('#userName input');
+const username = $('#userInput');
 
-const password = $('#password input');
+const password = $('#passwordInput');
 
-const usernameMessage = $('#userName p')
+const usernameMessage = $('#userName p');
 
-const passwordMessage = $('#password p')
+const passwordMessage = $('#password p');
 
 const button = $('button');
 
@@ -30,7 +30,6 @@ const success = () => {
 // Retrieves index number of associated username 
 const indexCache = () => {
     for (i = 0; i < savedData.length; i++) {
-        console.log(savedData[i])
         if (savedData[i].username === username.val()) {
             userIndex = i;
             break;
@@ -39,16 +38,18 @@ const indexCache = () => {
 }
 
 const redirect = () => {
-    if (
-    username.val() === savedData[userIndex].username && 
-    password.val() === savedData[userIndex].password
-    ) {
-        success();
-        localStorage.setItem('loggedUser', savedData[userIndex].username);
-        window.location.href = "/html_components/main.html";
-    } else {
-        error();
-    }
+    try {
+        if (
+        username.val() === savedData[userIndex].username && 
+        password.val() === savedData[userIndex].password 
+        ) {
+            success();
+            localStorage.setItem('loggedUser', savedData[userIndex].username);
+            window.location.href = "/html_components/main.html";
+        } else {
+            error();
+        }
+    } catch (e) {error()}
 }
 
 username.on('change', indexCache)
