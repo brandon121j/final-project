@@ -120,7 +120,8 @@ const financeLoader = () => {
 
 const removeAll = () => {
     $('.newExpense').remove();
-    localStorage.removeItem(loggedUser)
+    localStorage.removeItem(loggedUser);
+    location.reload();
 }
 
 $('#remove').on('click', removeAll)
