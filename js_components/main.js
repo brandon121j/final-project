@@ -1,6 +1,6 @@
 // Redirects user if they haven't properly logged in
 if (JSON.parse(localStorage.getItem('loggedUser') === null)) {
-    location.href = "/html_components/index.html";
+    location.href = "../index.html";
 } 
 
 // Retrieves username of logged in user
@@ -84,7 +84,7 @@ const sidebar = () => {
 const logout = () => {
     localStorage.setItem('savedData', JSON.stringify(savedData));
     localStorage.setItem(`${loggedUser}`, JSON.stringify(financeData))
-    location.href = "/html_components/index.html"
+    location.href = "../index.html"
     localStorage.removeItem('loggedUser')
 }
 

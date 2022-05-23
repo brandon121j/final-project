@@ -75,7 +75,7 @@ const submit = () => {
         ) {
             savedData.push(userData)
             localStorage.setItem('savedData', JSON.stringify(savedData))
-            window.location.href = "/html_components/index.html"
+            window.location.href = "../index.html"
         }
 }
 

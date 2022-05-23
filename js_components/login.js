@@ -45,7 +45,7 @@ const redirect = () => {
     ) {
         success();
         localStorage.setItem('loggedUser', savedData[userIndex].username);
-        window.location.href = "/html_components/main.html";
+        window.location.href = "../main.html";
     } else {
         error();
     }
